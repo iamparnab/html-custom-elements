@@ -1,9 +1,18 @@
 const path = require('path');
+const chalk = require('chalk');
 
 const pathPrefix = './src/components';
 
+console.log(
+  chalk.cyan('MODE') +
+    ' ' +
+    chalk.red('is') +
+    ' ' +
+    chalk.yellowBright(process.env.MODE)
+);
+
 const webpackConfig = {
-  mode: 'development',
+  mode: process.env.MODE,
   entry: {
     popup: pathPrefix + '/Popup/index.js',
     timestamp: pathPrefix + '/Timestamp/index.js',
@@ -35,7 +44,7 @@ const webpackConfig = {
       ],
     },
   },
-  devtool: 'eval-source-map',
+  devtool: process.env.MODE === 'development' ? 'eval-source-map' : 'none',
   watchOptions: {
     ignored: /node_modules/,
   },
