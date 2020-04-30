@@ -1,0 +1,62 @@
+export function popupHandler(rootElem) {
+  rootElem.innerHTML = `
+    <style>
+      .sample-1 {
+        margin: auto;
+        width: 200px;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    </style>  
+    <div class="sample-1">
+        <pop-up icon='/assets/images/info.svg' text='A nice popup message'>
+        </pop-up>
+        Hover over the icon.
+    </div>
+    `;
+  /**
+   * es6 dynamic import for code splitting.
+   */
+  import('./src/components/Popup').then(({ Popup }) => {
+    /**
+     * Define Custom Element
+     */
+    customElements.define('pop-up', Popup);
+  });
+}
+
+export function timestampHandler(rootElem) {
+  rootElem.innerHTML = `
+    <style>
+      .sample-2 {
+        width: 200px;
+        margin: auto;
+      }
+    </style>
+    <div class="sample-2">
+        <time-stamp epoch=${Date.now()}></time-stamp>
+    </div>
+    `;
+
+  import('./src/components/Timestamp').then(({ Timestamp }) => {
+    customElements.define('time-stamp', Timestamp);
+  });
+}
+
+export function rootHandler(rootElem) {
+  rootElem.innerHTML = `
+    <div class="wrapper">
+      <h3>
+        Examples of Custom Elements
+      </h3>
+      <ol>
+        <li>
+          <a data-link="/popup" href="">Simple Popup</a>
+        </li>
+        <li>
+          <a data-link="/timestamp" href="">Timestamp</a>
+        </li>
+      </ol>
+    </div>
+  `;
+}
