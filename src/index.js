@@ -47,7 +47,7 @@ document.addEventListener('click', (event) => {
     dataset: { link },
   } = event.target;
   /**
-   * Anchor nodes with data-link='true' can
+   * Anchor nodes with data-link attribute can
    * perform frontend routing.
    */
   if (nodeName === 'A' && link !== void 0) {
