@@ -1,19 +1,39 @@
 const path = require('path');
 
+const pathPrefix = './src/components';
+
 const webpackConfig = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    popup: pathPrefix + '/Popup/index.js',
+    timestamp: pathPrefix + '/Timestamp/index.js',
+    imginput: pathPrefix + '/ImgInput/index.js',
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
   devServer: {
-    open: true,
     port: 9635,
     compress: true,
     writeToDisk: true,
     contentBase: './',
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        {
+          from: '/popup',
+          to: pathPrefix + '/Popup/index.html',
+        },
+        {
+          from: '/timestamp',
+          to: pathPrefix + '/Timestamp/index.html',
+        },
+        {
+          from: '/img-input',
+          to: pathPrefix + '/ImgInput/index.html',
+        },
+      ],
+    },
   },
   devtool: 'eval-source-map',
   watchOptions: {

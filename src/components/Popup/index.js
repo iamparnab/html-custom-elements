@@ -56,3 +56,5 @@ export class Popup extends HTMLElement {
     shadowRoot.appendChild(style);
   }
 }
+
+customElements.define('pop-up', Popup);
