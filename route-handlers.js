@@ -1,6 +1,6 @@
 import { Routes } from './routes';
 
-export function popupHandler(rootElem) {
+function popupHandler(rootElem) {
   rootElem.innerHTML = `
     <style>
       .sample-1 {
@@ -27,7 +27,7 @@ export function popupHandler(rootElem) {
   });
 }
 
-export function timestampHandler(rootElem) {
+function timestampHandler(rootElem) {
   rootElem.innerHTML = `
     <style>
       .sample-2 {
@@ -45,7 +45,7 @@ export function timestampHandler(rootElem) {
   });
 }
 
-export function imgInputHandler(rootElem) {
+function imgInputHandler(rootElem) {
   rootElem.innerHTML = `
     <i-input></i-input>
   `;
