@@ -1,5 +1,4 @@
-import { Routes } from '../routes';
-import { rootHandler, routeHandler } from '../route-handlers';
+import { routeHandler } from '../route-handlers';
 
 const rootElem = document.querySelector('#root');
 

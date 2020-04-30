@@ -9,7 +9,10 @@ export class ImgInput extends HTMLElement {
     let input = document.createElement('input');
 
     let img = document.createElement('img');
-    img.setAttribute('src', this.getAttribute('icon') || 'assets/paw.svg');
+    img.setAttribute(
+      'src',
+      this.getAttribute('icon') || 'assets/images/paw.svg'
+    );
 
     container.append(input, img);
 
