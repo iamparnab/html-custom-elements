@@ -1,7 +1,7 @@
 const path = require('path');
 
 const webpackConfig = {
-  mode: process.env.MODE,
+  mode: 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -12,6 +12,7 @@ const webpackConfig = {
     compress: true,
     writeToDisk: true,
     contentBase: './',
+    historyApiFallback: true,
   },
   devtool: 'eval-source-map',
   watchOptions: {
