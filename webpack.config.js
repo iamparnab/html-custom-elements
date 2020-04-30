@@ -8,6 +8,7 @@ const webpackConfig = {
     filename: 'bundle.js',
   },
   devServer: {
+    open: true,
     port: 9635,
     compress: true,
     writeToDisk: true,
