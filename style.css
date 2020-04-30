@@ -16,3 +16,15 @@
   display: flex;
   padding-left: 10px;
 }
+
+.sample-1 {
+  margin: auto;
+  width: 200px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sample-2 {
+  width: 200px;
+  margin: auto;
+}

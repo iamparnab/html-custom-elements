@@ -1,15 +1,7 @@
 import { Routes } from './routes';
 
 function popupHandler(rootElem) {
-  rootElem.innerHTML = `
-    <style>
-      .sample-1 {
-        margin: auto;
-        width: 200px;
-        display: flex;
-        justify-content: space-evenly;
-      }
-    </style>  
+  rootElem.innerHTML = ` 
     <div class="sample-1">
         <pop-up icon='/assets/images/info.svg' text='A nice popup message'>
         </pop-up>
@@ -29,12 +21,6 @@ function popupHandler(rootElem) {
 
 function timestampHandler(rootElem) {
   rootElem.innerHTML = `
-    <style>
-      .sample-2 {
-        width: 200px;
-        margin: auto;
-      }
-    </style>
     <div class="sample-2">
         <time-stamp epoch=${Date.now()}></time-stamp>
     </div>
