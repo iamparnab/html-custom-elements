@@ -1,5 +1,5 @@
 import { Routes } from '../routes';
-import { popupHandler, rootHandler, timestampHandler } from '../route-handlers';
+import { rootHandler, routeHandler } from '../route-handlers';
 
 const rootElem = document.querySelector('#root');
 
@@ -7,35 +7,20 @@ const rootElem = document.querySelector('#root');
  * Load initial HTML, for now assuming that always
  * / path will be loaded first.
  */
-rootHandler(rootElem);
+routeHandler(rootElem);
 
 /**
  * Attach routechange event on window
  */
 window.addEventListener('routechange', () => {
-  const route = window.location.pathname;
-  switch (route) {
-    case Routes.POPUP: {
-      popupHandler(rootElem);
-      break;
-    }
-    case Routes.TIMESTAMP: {
-      timestampHandler(rootElem);
-    }
-  }
+  routeHandler(rootElem);
 });
 
 /**
  * Attach popstate event to handle browser navigation
  */
 window.addEventListener('popstate', () => {
-  const route = window.location.pathname;
-  switch (route) {
-    case Routes.ROOT: {
-      rootHandler(rootElem);
-      break;
-    }
-  }
+  routeHandler(rootElem);
 });
 
 /**

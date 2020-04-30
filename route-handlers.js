@@ -1,3 +1,5 @@
+import { Routes } from './routes';
+
 export function popupHandler(rootElem) {
   rootElem.innerHTML = `
     <style>
@@ -43,6 +45,16 @@ export function timestampHandler(rootElem) {
   });
 }
 
+export function imgInputHandler(rootElem) {
+  rootElem.innerHTML = `
+    <i-input></i-input>
+  `;
+
+  import('./src/components/ImgInput').then(({ ImgInput }) => {
+    customElements.define('i-input', ImgInput);
+  });
+}
+
 export function rootHandler(rootElem) {
   rootElem.innerHTML = `
     <div class="wrapper">
@@ -56,7 +68,31 @@ export function rootHandler(rootElem) {
         <li>
           <a data-link="/timestamp" href="">Timestamp</a>
         </li>
+        <li>
+          <a data-link="/img-input" href="">Image Input</a>
+        </li>
       </ol>
     </div>
   `;
+}
+
+export function routeHandler(rootElem) {
+  const route = window.location.pathname;
+  switch (route) {
+    case Routes.POPUP: {
+      popupHandler(rootElem);
+      break;
+    }
+    case Routes.TIMESTAMP: {
+      timestampHandler(rootElem);
+      break;
+    }
+    case Routes.IMGINPUT: {
+      imgInputHandler(rootElem);
+      break;
+    }
+    default: {
+      rootHandler(rootElem);
+    }
+  }
 }
