@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "cross-env MODE=development webpack-dev-server",
-    "build": "cross-env MODE=production webpack"
+    "build": "cross-env MODE=production webpack",
+    "gc": "node gc"
   }
 }
