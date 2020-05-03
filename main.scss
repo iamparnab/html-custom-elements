@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'Asap';
+  src: url('./assets/fonts/Asap-Regular.ttf');
+}
+* {
+  font-family: 'Asap';
+}
+
+#root {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  padding: 20px;
+  border-radius: 4px;
+  margin: 50px auto 0;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.16);
+
+  ol {
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    padding-inline-start: 70px;
+    counter-reset: component-counter;
+
+    li {
+      font-size: 15px;
+      margin-bottom: 10px;
+      counter-increment: component-counter;
+
+      &::before {
+        font-size: 12px;
+        content: counter(component-counter) '. ';
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.sample-1 {
+  width: 250px;
+
+  > div {
+    &:first-of-type {
+      display: flex;
+    }
+
+    > pop-up {
+      margin-right: 10px;
+    }
+  }
+
+  input#pop-up-text {
+    width: 100%;
+    box-shadow: 0 3px 6px rosybrown;
+    border: 1px solid transparent;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+}
+
+.sample-2 {
+  width: 200px;
+}

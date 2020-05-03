@@ -25,7 +25,12 @@ const pages = glob.sync(pathPrefix + '/**/index.js').reduce(
       ],
     };
   },
-  { entries: {}, rewrites: [] }
+  {
+    entries: {
+      index: './index.js',
+    },
+    rewrites: [],
+  }
 );
 
 console.log(pages);
@@ -62,7 +67,16 @@ const webpackConfig = {
     rules: [
       {
         test: /\.s?[sc]ss$/,
+        exclude: /main.scss/,
         loader: ['to-string-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /main.scss/,
+        loader: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ['file-loader'],
       },
     ],
   },

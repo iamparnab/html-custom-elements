@@ -1,4 +1,5 @@
 import style from './style.scss';
+import '../../../main.scss';
 
 export class Timestamp extends HTMLElement {
   constructor() {
