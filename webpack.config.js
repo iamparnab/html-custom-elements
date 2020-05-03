@@ -1,7 +1,34 @@
+const glob = require('glob');
 const path = require('path');
 const chalk = require('chalk');
 
 const pathPrefix = './src/components';
+const pages = glob.sync(pathPrefix + '/**/index.js').reduce(
+  (all, path) => {
+    const entry = path
+      .replace('/index.js', '')
+      .toLowerCase()
+      .split('/')
+      .slice(-1)[0];
+
+    return {
+      entries: {
+        ...all.entries,
+        [entry]: path,
+      },
+      rewrites: [
+        ...all.rewrites,
+        {
+          from: '/' + entry,
+          to: path.replace('/index.js', '/index.html'),
+        },
+      ],
+    };
+  },
+  { entries: {}, rewrites: [] }
+);
+
+console.log(pages);
 
 console.log(
   chalk.cyan('MODE') +
@@ -13,11 +40,7 @@ console.log(
 
 const webpackConfig = {
   mode: process.env.MODE,
-  entry: {
-    popup: pathPrefix + '/Popup/index.js',
-    timestamp: pathPrefix + '/Timestamp/index.js',
-    imginput: pathPrefix + '/ImgInput/index.js',
-  },
+  entry: pages.entries,
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
@@ -28,20 +51,7 @@ const webpackConfig = {
     writeToDisk: true,
     contentBase: './',
     historyApiFallback: {
-      rewrites: [
-        {
-          from: '/popup',
-          to: pathPrefix + '/Popup/index.html',
-        },
-        {
-          from: '/timestamp',
-          to: pathPrefix + '/Timestamp/index.html',
-        },
-        {
-          from: '/img-input',
-          to: pathPrefix + '/ImgInput/index.html',
-        },
-      ],
+      rewrites: pages.rewrites,
     },
   },
   devtool: process.env.MODE === 'development' ? 'eval-source-map' : 'none',
