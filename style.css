@@ -19,9 +19,21 @@
 
 .sample-1 {
   margin: auto;
-  width: 200px;
+  width: 250px;
+}
+.sample-1 > div:first-of-type {
   display: flex;
-  justify-content: space-evenly;
+}
+.sample-1 > div > pop-up {
+  margin-right: 10px;
+}
+.sample-1 input#pop-up-text {
+  width: 100%;
+  box-shadow: 0 3px 6px rosybrown;
+  border: 1px solid transparent;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
 }
 
 .sample-2 {

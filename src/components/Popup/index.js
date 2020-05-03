@@ -1,14 +1,44 @@
 export class Popup extends HTMLElement {
   constructor() {
     super();
-    const icon = this.getAttribute('icon');
-    const text = this.getAttribute('text');
+    this.icon = this.getAttribute('icon');
+    this._shadowRoot = this.attachShadow({ mode: 'closed' });
+  }
 
-    const shadowRoot = this.attachShadow({ mode: 'closed' });
+  /**
+   * Observe attribute change
+   */
+  static get observedAttributes() {
+    /**
+     * Only observe 'text' attribute
+     */
+    return ['text'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    /**
+     * This lifecycle method gets invoked everytime
+     * the observed attributes are changed.
+     * On the first call oldValue will be null,
+     */
+    console.table({
+      'Attribute Name': name,
+      'Old Value': oldValue,
+      'New Value': newValue,
+    });
+
+    if (oldValue === null) {
+      this.createCustomElement(this.icon, newValue);
+    } else {
+      this.updatePopupText(newValue);
+    }
+  }
+
+  createCustomElement(icon, text) {
     /**
      * Create HTML
      */
-    shadowRoot.innerHTML = `
+    this._shadowRoot.innerHTML = `
         <div class="popup-w">
             <img src=${icon} alt="popup-icon"/>
             <div class="popup-text">
@@ -37,23 +67,27 @@ export class Popup extends HTMLElement {
         .popup-w > .popup-text {
             position: absolute;
             display: none;
-            top: -30px;
-            left: -100px;
-            width: 200px;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
             border-radius: 8px;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-            padding: 4px;
+            padding: 10px;
             border: 1px solid rgba(0,0,0,0.16);
             font-size: 14px;
             text-align: center;
             background-color: #fff;
+            white-space: nowrap;
         }
      `;
 
     /**
      * Append style to Shadom DOM
      */
-    shadowRoot.appendChild(style);
+    this._shadowRoot.appendChild(style);
+  }
+  updatePopupText(text) {
+    this._shadowRoot.querySelector('div.popup-text').innerHTML = text;
   }
 }
 

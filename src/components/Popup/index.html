@@ -9,10 +9,28 @@
   </head>
   <body id="root">
     <div class="sample-1">
-      <pop-up icon="/assets/images/info.svg" text="A nice popup message">
-      </pop-up>
-      Hover over the icon.
+      <div>
+        <pop-up icon="/assets/images/info.svg" text="A nice popup message">
+        </pop-up>
+        Hover over the icon.
+      </div>
+      <div>
+        <input
+          placeholder="Enter Popup text (press enter to submit)"
+          id="pop-up-text"
+          onkeyup="changeText(event)"
+        />
+      </div>
     </div>
   </body>
   <script src="dist/popup.bundle.js"></script>
+  <script>
+    function changeText(event) {
+      if (event.key === 'Enter') {
+        const popupElem = document.querySelector('pop-up');
+        popupElem.setAttribute('text', event.target.value);
+        event.target.value = '';
+      }
+    }
+  </script>
 </html>
