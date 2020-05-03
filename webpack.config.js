@@ -80,5 +80,10 @@ const webpackConfig = {
       },
     ],
   },
+  resolve: {
+    alias: {
+      Root: __dirname,
+    },
+  },
 };
 module.exports = webpackConfig;

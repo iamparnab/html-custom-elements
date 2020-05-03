@@ -1,5 +1,5 @@
 import style from './style.scss';
-import '../../../main.scss';
+import 'Root/main.scss';
 
 export class ImgInput extends HTMLElement {
   constructor() {
