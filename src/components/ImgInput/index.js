@@ -1,3 +1,5 @@
+import style from './style.scss';
+
 export class ImgInput extends HTMLElement {
   constructor() {
     super();
@@ -16,33 +18,10 @@ export class ImgInput extends HTMLElement {
 
     container.append(input, img);
 
-    let style = document.createElement('style');
-    style.textContent = `
-        div {
-          position: relative;
-          display: inline-block;
-              }
-  
-              input {
-                  padding: 15px;
-          font-size: 14px;
-          border-radius: 4px;
-          border: 1px solid #000000e3;
-        }
-        input:focus {
-          outline: none;
-        }
-  
-              img {
-          top: 50%;
-          width: 30px;
-          right: 15px;
-                  position: absolute;
-                  transform: translateY(-50%);
-              }
-          `;
+    let styleElem = document.createElement('style');
+    styleElem.textContent = style;
 
-    shadow.append(style, container);
+    shadow.append(styleElem, container);
   }
 }
 

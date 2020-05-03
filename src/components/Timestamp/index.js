@@ -1,3 +1,5 @@
+import style from './style.scss';
+
 export class Timestamp extends HTMLElement {
   constructor() {
     super();
@@ -30,21 +32,11 @@ export class Timestamp extends HTMLElement {
           </div>
       `;
 
-    const style = document.createElement('style');
+    const styleElem = document.createElement('style');
 
-    style.textContent = `
-          .timestamp-w {
-  
-          }
-          .timestamp-w > div {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              padding: 4px;
-          }
-      `;
+    styleElem.textContent = style;
 
-    shadowRoot.appendChild(style);
+    shadowRoot.appendChild(styleElem);
   }
 }
 customElements.define('time-stamp', Timestamp);

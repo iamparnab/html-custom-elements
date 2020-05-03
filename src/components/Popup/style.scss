@@ -1,0 +1,26 @@
+.popup-w {
+  position: relative;
+  > img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    &:hover + .popup-text {
+      display: block;
+    }
+  }
+  > .popup-text {
+    position: absolute;
+    display: none;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    font-size: 14px;
+    text-align: center;
+    background-color: #fff;
+    white-space: nowrap;
+  }
+}

@@ -1,3 +1,5 @@
+import style from './style.scss';
+
 export class Popup extends HTMLElement {
   constructor() {
     super();
@@ -46,45 +48,18 @@ export class Popup extends HTMLElement {
             </div>
         </div>
     `;
-
     /**
-     * Create stylesheet
+     * Create style element
      */
-
-    const style = document.createElement('style');
-    style.textContent = `
-        .popup-w {
-            position: relative;
-        }
-        .popup-w > img {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-        .popup-w > img:hover + .popup-text{
-            display: block
-        }
-        .popup-w > .popup-text {
-            position: absolute;
-            display: none;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 8px;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-            padding: 10px;
-            border: 1px solid rgba(0,0,0,0.16);
-            font-size: 14px;
-            text-align: center;
-            background-color: #fff;
-            white-space: nowrap;
-        }
-     `;
-
+    const styleElem = document.createElement('style');
+    /**
+     * Add style string(by to-string-loader) in the node
+     */
+    styleElem.textContent = style;
     /**
      * Append style to Shadom DOM
      */
-    this._shadowRoot.appendChild(style);
+    this._shadowRoot.appendChild(styleElem);
   }
   updatePopupText(text) {
     this._shadowRoot.querySelector('div.popup-text').innerHTML = text;

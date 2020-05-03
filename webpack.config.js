@@ -58,5 +58,13 @@ const webpackConfig = {
   watchOptions: {
     ignored: /node_modules/,
   },
+  module: {
+    rules: [
+      {
+        test: /\.s?[sc]ss$/,
+        loader: ['to-string-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
 };
 module.exports = webpackConfig;
