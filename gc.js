@@ -98,6 +98,21 @@ function html(componentClassName, componentRouteName) {
 function scss() {
   return `.${componentName}-w {
   position: relative;
+  animation: float 5s infinite forwards linear;
+}
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(-100px, -100px);
+  }
+  50% {
+    transform: translate(100px, -100px);
+  }
+  75% {
+    transform: translate(100px, 100px);
+  }
 }
   `;
 }
@@ -110,7 +125,19 @@ export class ${componentClassName} extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({mode: 'closed'});
-    shadowRoot.innerHTML = '${componentName} works!'
+    shadowRoot.innerHTML = '<div class="${componentName}-w">${componentName} works!</div>'
+
+    /**
+     * Create style
+     */
+    const styleElement = document.createElement('style');
+    styleElement.textContent = style;
+
+    /**
+     * Attach to shadowRoot
+     */
+
+     shadowRoot.appendChild(styleElement)
   }
 }
   
