@@ -97,24 +97,8 @@ function html(componentClassName, componentRouteName) {
 
 function scss() {
   return `.${componentName}-w {
-  position: relative;
-  animation: float 5s infinite forwards linear;
-}
-@keyframes float {
-  0% {
-    transform: translate(0px, 0px);
-  }
-  25% {
-    transform: translate(-100px, -100px);
-  }
-  50% {
-    transform: translate(100px, -100px);
-  }
-  75% {
-    transform: translate(100px, 100px);
-  }
-}
-  `;
+    position: relative;
+  }`;
 }
 
 function js(componentClassName) {
