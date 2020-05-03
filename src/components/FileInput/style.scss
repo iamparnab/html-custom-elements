@@ -1,0 +1,20 @@
+label {
+  width: 200px;
+  display: flex;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  align-items: center;
+  box-shadow: 0 3px 6px rosybrown;
+
+  img {
+    width: 25px;
+    margin-right: 10px;
+  }
+
+  + input[type='file'] {
+    right: 100%;
+    bottom: 100%;
+    position: fixed;
+  }
+}
