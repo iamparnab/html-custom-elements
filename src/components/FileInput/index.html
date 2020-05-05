@@ -7,7 +7,11 @@
     <title>File Input</title>
   </head>
   <body id="root">
-    <f-input onchange="console.log(event.detail)" accept=".pdf,.txt"></f-input>
+    <f-input
+      onchange="console.log(event.detail)"
+      accept=".pdf,.txt"
+      candrop="true"
+    />
   </body>
   <script src="dist/fileinput.bundle.js"></script>
 </html>

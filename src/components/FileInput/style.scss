@@ -1,15 +1,38 @@
-label {
-  width: 200px;
+div#inputContainer {
   display: flex;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 4px;
+  position: relative;
   align-items: center;
-  box-shadow: 0 3px 6px rosybrown;
 
   img {
+    left: 10px;
     width: 25px;
-    margin-right: 10px;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  label {
+    width: 165px;
+    padding: 10px;
+    font-size: 14px;
+    overflow: hidden;
+    padding-left: 45px;
+    border-radius: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border: 1px solid transparent;
+    box-shadow: 0 3px 6px rosybrown;
+
+    &[data-file-chosen] {
+      color: #00000070;
+    }
+
+    + div {
+      padding: 3px;
+      color: red;
+      bottom: -20px;
+      font-size: 10px;
+      position: absolute;
+    }
   }
 
   + input[type='file'] {
@@ -17,4 +40,19 @@ label {
     bottom: 100%;
     position: fixed;
   }
+}
+
+div#dropTarget {
+  width: 200px;
+  padding: 10px;
+  height: 200px;
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 4px;
+  color: #00000070;
+  text-align: center;
+  margin-bottom: 10px;
+  align-items: center;
+  border: 1px dashed rosybrown;
 }
