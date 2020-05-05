@@ -1,0 +1,30 @@
+.select-wrapper {
+  position: relative;
+  width: 220px;
+  > beautiful-option {
+    display: none;
+    border: 1px solid chartreuse;
+    padding: 12px;
+    cursor: pointer;
+    width: 100%;
+
+    &:first-of-type {
+      display: block;
+      box-shadow: 0px 3px 6px royalblue;
+      border-radius: 20px 20px 0px 0px;
+      border-bottom: none;
+    }
+
+    &.main {
+      border-radius: 20px !important;
+    }
+
+    &:not(:first-of-type) {
+      border-top: none;
+    }
+
+    &:last-of-type {
+      border-radius: 0px 0px 20px 20px;
+    }
+  }
+}
