@@ -64,6 +64,12 @@ export class Tree extends HTMLElement {
 
           if (classList.contains('show')) {
             classList.remove('show');
+            let childContainers = nodeContainer.querySelectorAll(
+              '.child-container'
+            );
+            for (let j = 0; j < childContainers.length; j++) {
+              childContainers[j].classList.remove('show');
+            }
           } else {
             classList.add('show');
           }
