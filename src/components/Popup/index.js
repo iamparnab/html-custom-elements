@@ -2,12 +2,6 @@ import style from './style.scss';
 import 'Root/main.scss';
 
 export class Popup extends HTMLElement {
-  constructor() {
-    super();
-    this.icon = this.getAttribute('icon');
-    this._shadowRoot = this.attachShadow({ mode: 'closed' });
-  }
-
   /**
    * Observe attribute change
    */
@@ -16,6 +10,12 @@ export class Popup extends HTMLElement {
      * Only observe 'text' attribute
      */
     return ['text'];
+  }
+
+  constructor() {
+    super();
+    this.icon = this.getAttribute('icon');
+    this._shadowRoot = this.attachShadow({ mode: 'closed' });
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
