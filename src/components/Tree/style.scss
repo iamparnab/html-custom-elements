@@ -1,0 +1,31 @@
+#tree-container {
+  width: 100%;
+}
+
+div[data-node] {
+  display: flex;
+  max-width: 100px;
+  margin-bottom: 7px;
+  align-items: center;
+
+  > img {
+    width: 20px;
+    margin-right: 5px;
+  }
+
+  > div {
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.child-container {
+  display: none;
+  margin-left: 15px;
+
+  &.show {
+    display: block;
+  }
+}
