@@ -24,7 +24,7 @@ export class FileInput extends HTMLElement {
     let img = document.createElement('img');
     img.setAttribute(
       'src',
-      this.getAttribute('icon') || 'assets/images/Pink.ico'
+      this.getAttribute('icon') || 'assets/images/file1.ico'
     );
 
     let label = document.createElement('label');
