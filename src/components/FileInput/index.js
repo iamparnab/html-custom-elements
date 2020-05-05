@@ -7,10 +7,9 @@ export class FileInput extends HTMLElement {
 
     let shadow = this.attachShadow({ mode: 'closed' });
 
-    let div;
+    const div = document.createElement('div');
 
     if (this.getAttribute('candrop')) {
-      div = document.createElement('div');
       div.setAttribute('id', 'dropTarget');
       div.textContent = 'Drag and drop your files here';
       div.ondragover = (event) => {
