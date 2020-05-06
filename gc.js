@@ -98,7 +98,7 @@ function html(componentClassName, componentRouteName) {
 function scss() {
   return `.${componentName}-w {
     position: relative;
-  }`;
+}`;
 }
 
 function js(componentClassName) {

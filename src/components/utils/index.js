@@ -1,9 +1,10 @@
 /**
- * @param {*} selector
+ * @param {string} selector
+ * @param {ThisType} thisArg
  * @returns {HTMLElement}
  */
-export function $(selector) {
-  return (this || document).querySelector(selector);
+export function $(selector, thisArg) {
+  return (thisArg || document).querySelector(selector);
 }
 
 /**
