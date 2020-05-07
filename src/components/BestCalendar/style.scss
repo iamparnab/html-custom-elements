@@ -1,9 +1,61 @@
+%v-center {
+  display: flex;
+  align-items: center;
+}
+%absolute-center {
+  @extend %v-center;
+  justify-content: center;
+}
+%pseudo-content {
+  content: '';
+  position: absolute;
+  border: 20px solid rgba(0, 0, 0, 0.16);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
 .best-calendar-w {
   position: relative;
   > div {
     &:first-of-type {
+      @extend %absolute-center;
       text-align: center;
       font-weight: bold;
+      > div {
+        &:first-of-type,
+        &:last-of-type {
+          @extend %absolute-center;
+          background-color: rgba(0, 0, 0, 0.16);
+          padding: 4px 12px;
+          width: 30px;
+          cursor: pointer;
+          position: relative;
+        }
+        &:first-of-type {
+          border-radius: 0px 4px 4px 0px;
+          &::before {
+            @extend %pseudo-content;
+            right: 100%;
+            border-left-color: transparent;
+          }
+        }
+        &:last-of-type {
+          border-radius: 4px 0px 0px 4px;
+          &::after {
+            @extend %pseudo-content;
+            left: 100%;
+            border-right-color: transparent;
+          }
+        }
+        &:nth-last-child(2) {
+          margin: 0 15px;
+          display: flex;
+          width: 100px;
+          justify-content: space-around;
+          background-color: rgba(0, 0, 0, 0.16);
+          padding: 4px 12px;
+          border-radius: 4px;
+        }
+      }
     }
     &.day-names-wrapper {
       font-weight: bold;
