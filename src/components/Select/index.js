@@ -61,7 +61,7 @@ export class BeautifulSelect extends HTMLElement {
       this.styleElem = null;
 
       this._main.className = 'main';
-      this._main = $.call(this._shadow, 'beautiful-option');
+      this._main = $('beautiful-option', this._shadow);
     } else {
       this._main.classList.remove('main');
       const styleElem = document.createElement('style');
