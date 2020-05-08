@@ -9,8 +9,9 @@ export function $(selector, thisArg) {
 
 /**
  * @param {*} selector
+ * @param {ThisType} thisArg
  * @returns {NodeListOf<HTMLElement>}
  */
-export function $all(selector) {
-  return document.querySelectorAll(selector);
+export function $all(selector, thisArg) {
+  return (thisArg || document).querySelectorAll(selector);
 }

@@ -12,6 +12,13 @@ export class ImgInput extends HTMLElement {
     let input = document.createElement('input');
 
     let img = document.createElement('img');
+
+    let placeholder = this.getAttribute('placeholder');
+    let type = this.getAttribute('type');
+
+    input.setAttribute('type', type || 'text');
+    input.setAttribute('placeholder', placeholder || '');
+
     img.setAttribute(
       'src',
       this.getAttribute('icon') || 'assets/images/paw.svg'
